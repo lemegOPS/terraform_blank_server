@@ -52,32 +52,3 @@ data "terraform_remote_state" "bucket_tfstate_data" {
   }
 }
 
-/*
-terraform {
-  backend "s3" {
-    bucket        = aws_s3_bucket.bucket_state.id
-    key           = aws_s3_object.bucket_tfstate_upload.id
-    region        = lookup(var.region, var.tags["Environment"])
-    dynamdb_table = lookup(var.region, var.tags["Environment"])
-  }
-}
-
-
-
-terraform {
-  backend "s3" {}
-}
-
-data "template_file" "terraform_s3_backend2" {
-  template =   <<EOF
-  terraform {
-  backend "s3" {
-    bucket        = ${aws_s3_bucket.bucket_state.id}
-    key           = ${aws_s3_object.bucket_tfstate_upload.id}/terraform.tfstate")
-    region        = ${lookup(var.region, var.tags["Environment"])}
-    dynamdb_table = "state-locking"
-  }
-}
-EOF
-}
-*/
