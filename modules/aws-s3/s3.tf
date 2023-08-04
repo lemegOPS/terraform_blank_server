@@ -38,9 +38,6 @@ resource "aws_s3_object" "bucket_tfstate_upload" {
   source = "terraform.tfstate"
   key    = lower("${var.bucket_name}/terraform.tfstate")
   tags   = merge(var.tags, { Name = "${var.global_name}" })
-    provisioner "local-exec" {
-    command = "terraform state push terraform.tfstate"
-}
 }
 
 data "terraform_remote_state" "bucket_tfstate_data" {
@@ -52,4 +49,3 @@ data "terraform_remote_state" "bucket_tfstate_data" {
     profile = lookup(var.profile, var.tags["Environment"])
   }
 }
-
