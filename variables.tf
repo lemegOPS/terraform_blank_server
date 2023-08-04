@@ -1,6 +1,4 @@
-########################
-### Global variables ###
-########################
+#----------- Global variables -----------#
 
 variable "profile" {
   type = map(any)
@@ -33,9 +31,8 @@ variable "tags" {
   description = "Use this map of tags. Use to generate bucket name, names or resources, tags. See global_name in module"
 }
 
-##########################
-### Instance variables ###
-##########################
+
+#----------- Instance variables -----------#
 
 variable "instance_type" {
   type = map(any)
@@ -71,9 +68,8 @@ variable "ami_image" {
   description = "Add owner and ami_name to search and choose most recent ami"
 }
 
-#########################
-###   VPC variables   ###
-#########################
+
+#----------- VPC variables -----------#
 
 variable "cidr_block" {
   type = map(any)

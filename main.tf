@@ -32,13 +32,6 @@ module "aws-s3" {
   depends_on  = [module.aws-instance]
 }
 
-module "aws-eip" {
-  source      = "./modules/aws-eip"
-  tags        = var.tags
-  global_name = local.global_name
-  servers     = module.aws-instance.servers
-}
-
 module "aws-security-group" {
   source       = "./modules/aws-sg"
   vpc_id       = module.aws-vpc.vpc_id
@@ -52,14 +45,3 @@ module "aws-security-group" {
 module "aws-vpc" {
   source = "./modules/aws-vpc"
 }
-
-/*
-terraform {
-  backend "s3" {
-    bucket         = module.aws-s3.bucket_name
-    key            = module.aws-s3.key
-    region         = var.region
-    dynamodb_table = lookup(var.region, var.tags["Environment"])
-  }
-}
-*/

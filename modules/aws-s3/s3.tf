@@ -32,6 +32,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "bucket_encrypt" {
 
 
 #----------- TFstate upload block ----------#
+
 resource "aws_s3_object" "bucket_tfstate_upload" {
   bucket = aws_s3_bucket.bucket_state.id
   source = "terraform.tfstate"
